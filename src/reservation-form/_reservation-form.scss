@@ -1,0 +1,114 @@
+@import "../colors/colors";
+
+body {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  font-family: $font-main;
+}
+
+
+.reservation__container {
+  width: 960px;
+  height: 85vh;
+  border: 2px solid $color-primary;
+  border-radius: 40px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+  background-color: $color-bg;
+}
+
+.reservation__details {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+
+  & .details__image {
+    width: 450px;
+    height: 400px;
+    background-image: url("../images/campsitePlace.jpg");
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 20px;
+    border-radius: 25px;
+  }
+
+  & span {
+    display: block;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 3px solid $color-primary;
+    border-radius: 20px;
+    background: $color-secondary;
+  }
+}
+
+.reservation__form {
+  padding: 20px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 25px;
+    border: 2px solid $color-primary;
+    border-radius: 20px;
+    background: $color-secondary;
+
+    &:valid {
+
+
+    }
+  }
+
+  span {
+    color: lightgray;
+  }
+
+  .reservation__form-check {
+    display: inline-block;
+    width: auto;
+    background-color: gray;
+    margin-bottom: 5px;
+  }
+}
+
+.reservation__form-btn {
+  display: block;
+  border: none;
+  padding: 10px;
+  border-radius: 40px;
+  margin-top: 40px;
+  align-self: flex-end;
+}
+
+.btn--correct {
+  border: 2px solid $color-primary;
+  background-color: $color-secondary;
+  color: #111;
+  cursor: pointer;
+}
+
+.btn--disabled {
+  background-color: red;
+  cursor: not-allowed;
+  color: #fff;
+}
+
+label {
+
+}
