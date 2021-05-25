@@ -112,7 +112,7 @@ export const Reservation = () => {
                         dnia 10 maja 2018 roku o ochronie danych osobowych (Dz.U.2018 poz. 1000) oraz zgodnie
                         klauzulą informacyjną dołączoną do mojej zgody.</span>
                     </div>
-                    <button className="reservation__form-btn btn--disabled">Potwierdź</button>
+                    <button className="reservation__form-btn btn--correct">Potwierdź</button>
                 </form>
             </div>
         </div>
