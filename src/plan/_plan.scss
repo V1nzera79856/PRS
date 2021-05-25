@@ -1,0 +1,51 @@
+@import "../colors/colors";
+
+.plan-container {
+  width: 1380px;
+  height: 90vh;
+  border: 2px solid $color-primary;
+  margin-top: 40px;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.plan-header {
+  border-bottom: 2px solid $color-primary;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: $color-secondary;
+
+  & .calendar {
+    background-color: #fff;
+  }
+}
+
+.plan-calendar {
+  width: 700px;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+
+
+
+
+.plan-place {
+  display: inline-block;
+  background-color: green;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  text-align: center;
+}
+
+.plan-place-occupied {
+  display: inline-block;
+  background-color: red;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  text-align: center;
+}

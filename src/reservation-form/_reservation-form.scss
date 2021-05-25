@@ -10,7 +10,8 @@ body {
 
 .reservation__container {
   width: 960px;
-  height: 85vh;
+  min-width: 960px;
+  min-height: 85vh;
   border: 2px solid $color-primary;
   border-radius: 40px;
   display: flex;
@@ -29,7 +30,6 @@ body {
   & .details__image {
     width: 450px;
     height: 400px;
-    background-image: url("../images/campsitePlace.jpg");
     background-position: center;
     background-size: cover;
     margin-bottom: 20px;
@@ -54,6 +54,7 @@ body {
 
   h3 {
     text-align: center;
+    margin-bottom: 15px;
   }
 
   form {
@@ -67,16 +68,13 @@ body {
     margin-bottom: 25px;
     border: 2px solid $color-primary;
     border-radius: 20px;
-    background: $color-secondary;
+    background: #fff;
 
-    &:valid {
-
-
-    }
   }
 
   span {
     color: lightgray;
+    display: inline-block;
   }
 
   .reservation__form-check {
@@ -84,6 +82,8 @@ body {
     width: auto;
     background-color: gray;
     margin-bottom: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
   }
 }
 
@@ -109,6 +109,6 @@ body {
   color: #fff;
 }
 
-label {
-
+.check-container {
+  display: flex;
 }
