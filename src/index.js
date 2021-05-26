@@ -12,6 +12,8 @@ import {Reservation} from "./reservation-form/reservation-form";
 import {Calendar} from "./calendar/calendar";
 import {WelcomePage} from "./welcome-page/welcome-page";
 import {Plan} from "./plan/plan";
+import {Confirmation} from "./confirmation/confirmation";
+import {Cancel} from "./cancel/cancel";
 
 const App = () => {
     return (
@@ -23,6 +25,8 @@ const App = () => {
                         <Route path="/calendar" component={Calendar}/>
                         <Route path="/plan" component={Plan}/>
                         <Route path="/reservation" component={Reservation}/>
+                        <Route path="/confirmation" component={Confirmation}/>
+                        <Route path="/cancel" component={Cancel}/>
                     </Switch>
                 </div>
             </Router>

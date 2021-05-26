@@ -9,6 +9,8 @@ import {getDates} from "../date-range/date-renge";
 
 export let arrival = [];
 export let departure = [];
+export let arrivalAsDate = [];
+export let departureAsDate = [];
 export let dateRange;
 
 export const Calendar = () => {
@@ -27,9 +29,11 @@ export const Calendar = () => {
 
 
     const handleClick = () => {
-        arrival = JSON.stringify(arrivalDate);
+        arrival = JSON.stringify(arrivalDate).slice(1,11);
+        arrivalAsDate = arrivalDate;
         console.log(arrival);
-        departure = JSON.stringify(departureDate);
+        departure = JSON.stringify(departureDate).slice(1,11);
+        departureAsDate = departureDate;
         console.log(departure);
         dateRange = getDates(arrivalDate,departureDate);
     }

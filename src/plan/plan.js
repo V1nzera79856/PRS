@@ -1,17 +1,21 @@
 import React, {useState, useEffect} from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
-import {arrival, dateRange, departure} from "../calendar/calendar";
+import {arrival, arrivalAsDate, Calendar, dateRange, departure, departureAsDate} from "../calendar/calendar";
 import "../calendar/_calendar.scss";
 import Logo from "../images/logo.png";
 import {db} from "../firebase/firebase";
 import "./_plan.scss"
 import {getDates} from "../date-range/date-renge";
-import {Link} from "react-router-dom";
+import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
+import {Reservation} from "../reservation-form/reservation-form";
+import {WelcomePage} from "../welcome-page/welcome-page";
+
+export let placeID = "";
 
 export const Plan = () => {
-    const [arrivalDate, setArrivalDate] = useState(dateRange[0]);
-    const [departureDate, setDepartureDate] = useState(dateRange[dateRange.length - 1]);
+    const [arrivalDate, setArrivalDate] = useState(arrivalAsDate);
+    const [departureDate, setDepartureDate] = useState(departureAsDate);
     const [places, setPlaces] = useState([]);
 
     useEffect(() => {
@@ -26,24 +30,39 @@ export const Plan = () => {
             });
             setPlaces(allPlaces);
         });
-    }, [])
+    }, [arrivalDate, departureDate]);
 
-    useEffect(()=>{
+    useEffect(() => {
         handleReserved();
     }, [places])
 
     const handleReserved = () => {
+        const allDivs = document.querySelectorAll(".plan-place");
+        allDivs.forEach(div => {
+            div.classList.remove("plan-place-occupied")
+        })
+        const newDates = getDates(arrivalDate, departureDate);
         places.forEach(place => {
-            dateRange.forEach(date => {
+            newDates.forEach(date => {
                 let dateJson = JSON.stringify(date).slice(1, 11);
                 if (place.reserved.includes(dateJson)) {
-                    const divsOcc = document.querySelectorAll(`[data-key=${place.id}]`)
+                    const divsOcc = document.querySelectorAll(`[data-key=${place.id}]`);
+                    console.log(divsOcc);
                     divsOcc.forEach(div => {
                         div.classList.add("plan-place-occupied");
                     })
                 }
             })
         })
+    }
+
+    const handleClickPlace = (e) => {
+        if (e.target.classList.contains("plan-place-occupied")) {
+            e.preventDefault();
+        } else {
+            placeID = e.target.getAttribute("id");
+            console.log(placeID)
+        }
     }
 
     const handleChangeArrival = (date) => {
@@ -58,9 +77,10 @@ export const Plan = () => {
             <div className="plan-container">
                 <header className="plan-header">
                     <div className="plan-calendar">
+                        <h3>Data Przyjazdu:</h3>
                         <DatePicker className="calendar calendar-arrival" selected={arrivalDate}
                                     onChange={handleChangeArrival}/>
-
+                        <h3>Data Wyjazdu:</h3>
                         <DatePicker className="calendar calendar-departure" selected={departureDate}
                                     onChange={handleChangeDeparture}/>
                     </div>
@@ -68,15 +88,17 @@ export const Plan = () => {
                         <img src={Logo} alt="logo ośrodka" className="welcome-logo plan-logo"/>
                     </a>
                 </header>
-                <Link to="/reservation"> Do okna rezerwacji </Link>
+                <h2 className="plan-title">Prosimy o wybranie miejsca</h2>
                 <main className="plan-main-container">
                     {places.map(place => {
                         return (
-                            <div className="plan-place" data-key={place.id} key={place.id}>
+                            <Link to="/reservation" onClick={handleClickPlace}
+                                  className="plan-place" id={place.id} data-key={place.id} key={place.id}>
                                 <h3>{place.id}</h3>
-                            </div>
+                            </Link>
                         )
-                    })}
+                    })
+                    }
                 </main>
             </div>
         </>
