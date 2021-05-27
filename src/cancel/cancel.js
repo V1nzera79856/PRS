@@ -1,11 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import "../reservation-form/_reservation-form.scss"
 import "./cancel.scss"
 import {db} from "../firebase/firebase";
-import {getDates} from "../date-range/date-renge";
-import {logDOM} from "@testing-library/react";
+import {Link} from "react-router-dom";
 
-//testing : pPdClfkaDrWnbRm9svaR
 
 export const Cancel = () => {
 
@@ -27,6 +25,8 @@ export const Cancel = () => {
                 if (doc.data().cancelled === false) {
                     console.log(doc.data());
                     setCancelDetails(doc.data());
+                    const cancelBtn = document.querySelector(".cancel-reservation-btn");
+                    cancelBtn.classList.remove("button-hidden")
                 } else {
                     alert("Rezerwacja była juz anulowana")
                     console.log(doc.data());
@@ -72,7 +72,16 @@ export const Cancel = () => {
             db.collection("reservations").doc(`${confirmationNumber}`).update({
                 cancelled: true,
             }).then(() => {
-                console.log("done");
+                alert("Rezerwacja została anulowana");
+                setCancelDetails({
+                    name: "",
+                    surname: "",
+                    email: "",
+                    phone: "",
+                    arrival: "",
+                    departure: ""
+                })
+                setConfirmationNumber("");
             })
         }, 500)
     }
@@ -81,6 +90,7 @@ export const Cancel = () => {
     return (
         <div className="cancel-container">
             <div className="cancel-serach">
+                <Link to="/" className="back" > Powrót do stony głównej </Link>
                 <form action="" className="cancel-form" onSubmit={handleSearch}>
                     <label htmlFor="">Numer Rezerwacji:
                         <input onChange={handleChange} type="text" placeholder="Numer rezerwacji"
@@ -110,7 +120,7 @@ export const Cancel = () => {
                 <span className="details__departure">
                         Wyjazd: {cancelDetails.departure}
                     </span>
-                <button className="cancel-reservation-btn" onClick={handleCancel}>Potwierdź</button>
+                <button className="cancel-reservation-btn button-hidden" onClick={handleCancel}>Anuluj rezerwację</button>
             </div>
         </div>
     )

@@ -1,13 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import "./_reservation-form.scss";
 import {db} from "../firebase/firebase";
 import campsitePlace from "../images/campsitePlace.jpg";
-import {arrival, arrivalAsDate, dateRange, departure, departureAsDate} from "../calendar/calendar";
-import {getDates} from "../date-range/date-renge";
+import {arrival, dateRange, departure} from "../calendar/calendar";
 import firebase from "firebase";
 import {placeID} from "../plan/plan";
 import {Link} from "react-router-dom"
-
 
 
 export let confirmationNumber;

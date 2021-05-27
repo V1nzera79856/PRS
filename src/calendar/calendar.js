@@ -3,8 +3,7 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./_calendar.scss"
-import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
-import {Reservation} from "../reservation-form/reservation-form";
+import {Link} from "react-router-dom";
 import {getDates} from "../date-range/date-renge";
 
 export let arrival = [];
@@ -27,15 +26,14 @@ export const Calendar = () => {
     }
 
 
-
     const handleClick = () => {
-        arrival = JSON.stringify(arrivalDate).slice(1,11);
+        arrival = JSON.stringify(arrivalDate).slice(1, 11);
         arrivalAsDate = arrivalDate;
         console.log(arrival);
-        departure = JSON.stringify(departureDate).slice(1,11);
+        departure = JSON.stringify(departureDate).slice(1, 11);
         departureAsDate = departureDate;
         console.log(departure);
-        dateRange = getDates(arrivalDate,departureDate);
+        dateRange = getDates(arrivalDate, departureDate);
     }
 
     return (

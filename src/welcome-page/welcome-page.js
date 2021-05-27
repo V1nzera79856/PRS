@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import "./_welcome-page.scss"
 import Logo from "../images/logo.png"
 import {Link} from "react-router-dom";
@@ -10,7 +10,7 @@ export const WelcomePage = () => {
         <>
             <div className="welcome-container">
                 <a className="welcome-logo" href="https://camping-leba.pl/">
-                <img src={Logo} alt="logo ośrodka" className="welcome-logo"/>
+                    <img src={Logo} alt="logo ośrodka" className="welcome-logo"/>
                 </a>
                 <h1 className="welcome-title">
                     Witamy w systemie rezerwacyjnym ośrodka Camping 48 "Przymorze"

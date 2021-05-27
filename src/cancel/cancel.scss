@@ -1,0 +1,94 @@
+@import "../colors/colors";
+
+.cancel-container {
+  width: 1080px;
+  height: 90vh;
+  border: 2px solid $color-primary;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $color-bg;
+  margin-top: 40px;
+}
+
+.cancel-serach {
+  margin-top: 10px;
+  border-bottom: 2px solid $color-primary;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.cancel-form {
+  margin-bottom: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  label {
+    margin-right: 10px;
+  }
+
+  input {
+    border: 2px solid $color-primary;
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 20px;
+  }
+
+  .search-btn {
+    border: 2px solid $color-primary;
+    background-color: $color-secondary;
+    padding: 5px;
+    border-radius: 20px;
+  }
+}
+
+.cancel-reservation {
+  width: 100%;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+  span {
+    display: block;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 3px solid $color-primary;
+    border-radius: 20px;
+    background: $color-secondary;
+    width: 300px;
+  }
+}
+
+.cancel-reservation-btn {
+  border: 2px solid red;
+  background-color: lightcoral;
+  padding: 5px;
+  border-radius: 20px;
+  width: 100px;
+}
+
+.button-hidden {
+  display: none;
+}
+
+.back {
+  border: 2px solid $color-primary;
+  background-color: $color-secondary;
+  padding: 5px;
+  border-radius: 20px;
+  color: #111;
+  text-decoration: none;
+  align-self: flex-start;
+  justify-self: flex-start;
+  margin-left: 10px;
+  width: 250px;
+  text-align: center;
+}

@@ -117,15 +117,15 @@
   }
 
   &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%) rotate(45deg);
-      width: 70px;
-      height: 5px;
-      background-color: red;
-      border-radius: 70px;
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%) rotate(45deg);
+    width: 70px;
+    height: 5px;
+    background-color: red;
+    border-radius: 70px;
   }
 }

@@ -1,15 +1,13 @@
 import React, {useState, useEffect} from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
-import {arrival, arrivalAsDate, Calendar, dateRange, departure, departureAsDate} from "../calendar/calendar";
+import {arrivalAsDate, departureAsDate} from "../calendar/calendar";
 import "../calendar/_calendar.scss";
 import Logo from "../images/logo.png";
 import {db} from "../firebase/firebase";
 import "./_plan.scss"
 import {getDates} from "../date-range/date-renge";
-import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
-import {Reservation} from "../reservation-form/reservation-form";
-import {WelcomePage} from "../welcome-page/welcome-page";
+import {Link} from "react-router-dom";
 
 export let placeID = "";
 
@@ -22,7 +20,6 @@ export const Plan = () => {
         db.collection("places").get().then((querySnapshot) => {
             let allPlaces = [];
             querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
                 allPlaces.push({
                     ...doc.data(),
                     id: doc.id,
