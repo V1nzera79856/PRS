@@ -26,6 +26,7 @@ export const Plan = () => {
                 });
             });
             setPlaces(allPlaces);
+            console.log(allPlaces,places);
         });
     }, [arrivalDate, departureDate]);
 
@@ -44,7 +45,6 @@ export const Plan = () => {
                 let dateJson = JSON.stringify(date).slice(1, 11);
                 if (place.reserved.includes(dateJson)) {
                     const divsOcc = document.querySelectorAll(`[data-key=${place.id}]`);
-                    console.log(divsOcc);
                     divsOcc.forEach(div => {
                         div.classList.add("plan-place-occupied");
                     })
@@ -58,7 +58,6 @@ export const Plan = () => {
             e.preventDefault();
         } else {
             placeID = e.target.getAttribute("id");
-            console.log(placeID)
         }
     }
 

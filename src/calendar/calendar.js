@@ -29,10 +29,8 @@ export const Calendar = () => {
     const handleClick = () => {
         arrival = JSON.stringify(arrivalDate).slice(1, 11);
         arrivalAsDate = arrivalDate;
-        console.log(arrival);
         departure = JSON.stringify(departureDate).slice(1, 11);
         departureAsDate = departureDate;
-        console.log(departure);
         dateRange = getDates(arrivalDate, departureDate);
     }
 

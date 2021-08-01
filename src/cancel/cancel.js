@@ -23,13 +23,11 @@ export const Cancel = () => {
         db.collection("reservations").doc(`${confirmationNumber}`).get().then((doc) => {
             if (doc.exists) {
                 if (doc.data().cancelled === false) {
-                    console.log(doc.data());
                     setCancelDetails(doc.data());
                     const cancelBtn = document.querySelector(".cancel-reservation-btn");
                     cancelBtn.classList.remove("button-hidden")
                 } else {
                     alert("Rezerwacja była juz anulowana")
-                    console.log(doc.data());
                 }
 
             } else {
@@ -55,7 +53,6 @@ export const Cancel = () => {
         db.collection("places").doc(`${cancelDetails.place}`).get().then((doc) => {
             if (doc.exists) {
                 placeDates = doc.data().reserved;
-                console.log(placeDates);
                 resultDates = placeDates.filter(date => !cancelDetails.reservedDates.includes(date));
             } else {
                 console.log("not a place")
